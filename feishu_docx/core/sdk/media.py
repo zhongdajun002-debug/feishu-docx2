@@ -95,7 +95,7 @@ class MediaAPI(SubModule):
 
         策略：
         1. 首先尝试直接下载（适用于有权限的文档）
-        2. 如果失败（403/401等权限错误），使用临时下载 URL（适用于只读文档）
+        2. 如果失败（403/401等权限错误或空响应），使用临时下载 URL（适用于只读文档）
         """
         import httpx
 
@@ -115,11 +115,21 @@ class MediaAPI(SubModule):
             return str(file_path)
 
         # 策略2: 直接下载失败，尝试使用临时下载 URL
-        # 检查是否为权限错误（403/401/99991663等）
+        # 检查是否为权限错误或空响应
         error_code = response.code if hasattr(response, "code") else None
         permission_errors = {403, 401, 99991663, 99991400}  # 飞书常见权限错误码
 
-        if error_code in permission_errors:
+        # 检测需要降级的情况：
+        # 1. 权限错误码
+        # 2. 空响应（code=None, msg=None, response=b''）
+        should_fallback = (
+            error_code in permission_errors or
+            (error_code is None and
+             (not hasattr(response, "msg") or response.msg is None) and
+             (not hasattr(response, "raw") or not response.raw or response.raw.content == b''))
+        )
+
+        if should_fallback:
             console.print(f"[yellow]直接下载失败 (code: {error_code})，尝试使用临时下载 URL...[/yellow]")
 
             tmp_url = self.get_file_download_url(file_token, access_token)
