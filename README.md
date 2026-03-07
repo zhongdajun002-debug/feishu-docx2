@@ -236,7 +236,6 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 - [x] TUI interface
 - [x] Claude Skills support
 - [x] Batch export entire wiki space
-- [ ] MCP Server support
 - [x] Write to Feishu (create/update docs)
 
 ---

@@ -243,7 +243,6 @@ pytest tests/ -v
 - [x] TUI 终端界面
 - [x] Claude Skills 支持
 - [x] 批量导出整个知识空间
-- [ ] MCP Server 支持
 - [x] 写入飞书（创建/更新文档）
 
 ---
