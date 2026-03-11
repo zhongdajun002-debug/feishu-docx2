@@ -3,7 +3,7 @@
 # feishu-docx
 
 <p align="center">
-  <em>Feishu/Lark Docs、Sheet、Bitable → Markdown | AI Agent-friendly knowledge base exporter with OAuth 2.0, CLI, TUI & Claude Skills support</em><br>
+  <em>Feishu knowledge base export, writing, and cloud-space management tool with Markdown, WeChat import, CLI, TUI, and OAuth 2.0</em><br>
 </p>
 
 [![PyPI version](https://badge.fury.io/py/feishu-docx.svg)](https://badge.fury.io/py/feishu-docx)
@@ -24,10 +24,12 @@
 
 ## 🎯 Why feishu-docx?
 
-**Let AI Agents read your Feishu/Lark knowledge base.**
+**Let AI Agents read, write, and manage your Feishu/Lark knowledge base.**
 
 - 🤖 **Built for AI** — Works seamlessly with Claude/GPT Skills for document retrieval
-- 📄 **Full Coverage** — Documents, Spreadsheets, Bitables, Wiki nodes
+- 📄 **Full Coverage** — Documents, Spreadsheets, Bitables, Wiki nodes, and WeChat articles
+- ✍️ **Write Back Support** — Create docs, append content, and update specific blocks
+- ☁️ **Cloud-Space Management** — List files, delete files, manage permissions, clear files safely
 - 🔐 **Authentication** — One-time auth, automatic token refresh
 - 🎨 **Dual Interface** — CLI + Beautiful TUI (Textual-based)
 - 📦 **Zero Config** — `pip install` and start exporting
@@ -46,6 +48,12 @@ feishu-docx config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
 # Export! (auto-obtains tenant_access_token, no OAuth needed)
 feishu-docx export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
 
+# Create a Feishu doc directly from a WeChat article
+feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxx"
+
+# Manage app cloud-space documents
+feishu-docx drive ls --type docx
+
 # Optional: Use OAuth mode for user-level permissions
 # feishu-docx config set --auth-mode oauth && feishu-docx auth
 ```
@@ -53,9 +61,9 @@ feishu-docx export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
 
 ---
 
-## 🤖 Claude Skills Support
+## 🤖 Skills Support
 
-**Enable Claude to access your Feishu knowledge base directly!**
+**Enable Agent to access your Feishu knowledge base directly!**
 
 This project includes a Claude Skill at `.skills/feishu-docx/SKILL.md`.
 Supports OpenCode, Claude Code, Codex, Cursor, and more.
@@ -77,6 +85,9 @@ Copy this Skill to your agent project, and Claude can:
 | 📋 Bitable Export       | Multidimensional tables → Markdown              |
 | 📚 Wiki Export          | Auto-resolve wiki nodes                         |
 | 🗂️ Wiki Batch Export   | Recursively export entire wiki space with hierarchy |
+| ✍️ Document Writing    | Create docs, append Markdown, update specific blocks |
+| 📰 WeChat Import/Export | Export WeChat articles or create Feishu docs from them |
+| ☁️ Drive Management    | List files, delete files, manage permissions, clear files |
 | 🗄️ Database Schema     | Export APaaS database structure to Markdown     |
 | 🖼️ Auto Image Download | Images saved locally with relative paths        |
 | 🔐 Auth                 | Auto tenant_access_token (recommended) or OAuth 2.0 |
@@ -102,6 +113,14 @@ This tool currently supports exporting the following Feishu/Lark document compon
 ---
 
 ## 📖 Usage
+
+### Use Cases
+
+- Export Feishu docs, Sheets, Bitables, and Wiki nodes to Markdown
+- Export a WeChat article to Markdown
+- Create a Feishu doc directly from a WeChat article URL
+- Create, append, or update Feishu document content
+- Manage files and permissions in app cloud space or personal cloud space
 
 ### CLI
 
@@ -257,6 +276,15 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 | `config set`                       | Set credentials                         |
 | `config show`                      | Show configuration                      |
 | `config clear`                     | Clear cache                             |
+
+## 📚 Documentation Strategy
+
+- `README`: overview, quick start, and command index
+- `docs/*.md`: topic-focused guides for more complex workflows
+
+Currently available:
+
+- [Drive Management](./docs/drive-management.md)
 
 ---
 

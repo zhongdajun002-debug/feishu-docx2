@@ -3,7 +3,7 @@
 # feishu-docx
 
 <p align="center">
-  <em>飞书云文档 → Markdown | AI Agent 友好型导出工具 | 支持 OAuth 2.0、CLI、TUI & Claude Skills</em>
+  <em>飞书知识库导出、写入与云空间管理工具 | 支持 Markdown、公众号导入、CLI、TUI、OAuth 2.0</em>
 </p>
 
 [![PyPI version](https://badge.fury.io/py/feishu-docx.svg)](https://badge.fury.io/py/feishu-docx)
@@ -23,10 +23,12 @@
 
 ## 🎯 为什么选择 feishu-docx？
 
-**让 AI Agent 读懂你的飞书知识库。**
+**让 AI Agent 读懂、写入并管理你的飞书知识库。**
 
 - 🤖 **为AI而生** — 完美支持 Claude/GPT Skills，让 Agent 直接查询飞书文档
-- 📄 **全面覆盖** — 云文档、电子表格、多维表格、知识库，一网打尽
+- 📄 **全面覆盖** — 云文档、电子表格、多维表格、知识库、公众号文章
+- ✍️ **支持写回** — 创建文档、追加内容、更新指定 Block
+- ☁️ **云空间管理** — 列文件、删文件、权限管理、批量清空
 - 🔐 **自动授权** — 一次授权，Token 自动刷新，告别手动管理
 - 🎨 **双重界面** — CLI 命令行 + TUI 终端图形界面，任君选择
 - 📦 **开箱即用** — `pip install` 即可使用，零配置开始导出
@@ -45,15 +47,21 @@ feishu-docx config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
 # 导出！（自动获取 tenant_access_token，无需 OAuth 授权）
 feishu-docx export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
 
+# 直接从公众号抓取并创建飞书文档
+feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxx"
+
+# 管理应用云空间中的文档
+feishu-docx drive ls --type docx
+
 # 可选：使用 OAuth 模式获取用户级权限
 # feishu-docx config set --auth-mode oauth && feishu-docx auth
 ```
 
 ---
 
-## 🤖 Claude Skills 支持
+## 🤖 Skills 支持
 
-**让 Claude 直接访问你的飞书知识库！**
+**让 Agent 直接访问你的飞书知识库！**
 
 本项目已包含 Claude Skills 配置，位于 `.skills/feishu-docx/SKILL.md`。
 Supports OpenCode, Claude Code, Codex, Cursor, and more.
@@ -75,6 +83,9 @@ Supports OpenCode, Claude Code, Codex, Cursor, and more.
 | 📋 多维表格导出    | Bitable → Markdown 表格      |
 | 📚 知识库导出     | Wiki 节点自动解析，支持嵌套结构         |
 | 🗂️ Wiki 批量导出 | 递归导出整个知识空间，保持目录层级结构        |
+| ✍️ 文档写入      | 创建文档、追加 Markdown、更新指定 Block |
+| 📰 公众号导入导出   | 公众号文章导出 Markdown / 直接导入飞书 |
+| ☁️ 云空间管理    | 列文件、删文件、公开权限、成员权限、批量清空 |
 | 🗄️ 数据库结构导出  | APaaS 数据库表结构导出为 Markdown   |
 | 🖼️ 自动下载图片   | 图片保存到本地，Markdown 相对路径引用    |
 | 🔐 认证方式     | 自动 tenant_access_token（推荐）/ OAuth 2.0 |
@@ -98,6 +109,14 @@ Supports OpenCode, Claude Code, Codex, Cursor, and more.
 ---
 
 ## 📖 使用方式
+
+### 适用场景
+
+- 导出飞书文档、Sheet、Bitable、Wiki 为 Markdown
+- 抓取微信公众号文章并导出为 Markdown
+- 抓取微信公众号文章并直接创建飞书文档
+- 创建/追加/更新飞书文档内容
+- 管理应用云空间或个人云空间中的文件和权限
 
 ### CLI 命令行
 
@@ -253,6 +272,15 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 | `config set`                    | 设置凭证                    |
 | `config show`                   | 查看配置                    |
 | `config clear`                  | 清除缓存                    |
+
+## 📚 文档结构建议
+
+- `README`：总览、快速开始、命令索引
+- `docs/*.md`：复杂主题的专题文档
+
+当前已提供：
+
+- [云空间管理](./docs/drive-management.md)
 
 ---
 
