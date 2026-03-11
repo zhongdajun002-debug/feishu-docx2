@@ -121,6 +121,16 @@ feishu-docx export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
 # Fetch a WeChat article and create a Feishu doc
 feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxxx"
 
+# List app cloud-space documents in tenant mode
+feishu-docx drive ls --type docx
+
+# Manage public permission of a document
+feishu-docx drive perm-show "https://xxx.feishu.cn/docx/xxx"
+feishu-docx drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
+
+# Clear files in cloud space with double confirmation
+feishu-docx drive clear --type docx
+
 # Use token directly
 feishu-docx export "URL" -t your_access_token
 
@@ -197,6 +207,17 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 
 > ⚠️ Tenant mode requires pre-configuring document permissions in [Feishu Open Platform](https://open.feishu.cn/app) → App Permissions.
 
+**Cloud space management (tenant/user):**
+```bash
+# Tenant mode: manage files in app cloud space
+feishu-docx drive ls --type docx
+
+# OAuth mode: manage files in personal cloud space
+feishu-docx drive ls --auth-mode oauth --type docx
+```
+
+> 📎 Feishu separates cloud space by token type: `tenant_access_token` maps to app cloud space, and `user_access_token` maps to personal cloud space. App cloud space resources cannot be managed from the UI and should be managed through Drive/File APIs.
+
 **OAuth Mode (For user-level access):**
 ```bash
 # One-time setup
@@ -220,6 +241,15 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 | `export-workspace-schema <id>`     | Export APaaS database schema            |
 | `export-wechat <URL>`              | Export WeChat article to Markdown       |
 | `create <title>`                   | Create new Feishu document (`--url` supported) |
+| `drive ls`                         | List files in app/user cloud space      |
+| `drive rm <TOKEN>`                 | Delete a file from cloud space          |
+| `drive perm-show <TOKEN>`          | Show public permission settings         |
+| `drive perm-set <TOKEN>`           | Update public permission settings       |
+| `drive perm-members <TOKEN>`       | List permission members                 |
+| `drive perm-add <TOKEN>`           | Add a permission member                 |
+| `drive perm-update <TOKEN>`        | Update a permission member              |
+| `drive perm-rm <TOKEN>`            | Remove a permission member              |
+| `drive clear`                      | Clear files with double confirmation    |
 | `write <URL>`                      | Append Markdown content to document     |
 | `update <URL>`                     | Update specific block in document       |
 | `auth`                             | OAuth authorization                     |
@@ -244,6 +274,10 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 ## 📜 Changelog
 
 See [CHANGELOG.md](./CHANGELOG.md) for version history.
+
+## 📚 More Docs
+
+- [Drive Management](./docs/drive-management.md)
 
 ---
 

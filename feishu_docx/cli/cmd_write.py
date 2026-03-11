@@ -231,7 +231,6 @@ def write(
 
         # 解析 URL 获取 document_id
         doc_info = exporter.parse_url(url)
-        import pdb; pdb.set_trace()
         if doc_info.node_type not in ["docx", "wiki"]:
             console.print(f"[red]❌ 只支持 docx / wiki 类型文档，当前类型: {doc_info.node_type}[/red]")
             raise typer.Exit(1)

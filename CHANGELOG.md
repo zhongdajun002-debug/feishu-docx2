@@ -5,13 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.2] - 2026-03-11
+
+### Added
+- 新增 `drive` 命令组，支持在应用云空间或个人云空间中列出文件、删除文件、查看/更新公开权限、管理权限成员
+- 新增 `DriveAPI` SDK 子模块，封装 `drive.v1.file` 与 `drive.v1.permission_*` 文件管理能力
+- 新增云空间资源 URL / token 解析能力，支持从 `docx`、`sheet`、`bitable`、`wiki`、`folder` 等链接中提取 token
+- 新增 `drive clear` 高风险清空命令，默认执行双重确认
+- 新增专题文档 `docs/drive-management.md`
 
 ### Fixed
 - 修复 Markdown 嵌套列表写入飞书时 `children` 结构不兼容的问题，改为递归创建子块
 - 修复包含 YAML front matter 的 Markdown 文件写入异常，写入前会先清理 front matter
 - 修复 Markdown 表格本地创建流程，按飞书限制自动拆分超过 9 行的表格并逐个回填单元格内容
 - 修复 Block 创建请求体清洗逻辑，使用飞书 SDK `Block` 模型构造请求并移除不允许的响应字段
+- 修复 `write` 命令中的调试断点残留
 
 ## [0.2.1] - 2026-03-02
 

@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 # =====================================================
 # @File   ：__init__.py
-# @Date   ：2026/01/29 15:24
+# @Date   ：2026/03/11 11:45
 # @Author ：leemysw
 # 2026/02/01 18:45   Refactor - 组合模式重构
 # 2026/02/04 10:15   Add document domain setter for media fallback
+# 2026/03/11 11:45   Add drive file management module
 # =====================================================
 """
 [INPUT]: 依赖各子模块
@@ -22,6 +23,7 @@ from .base import SDKCore
 from .bitable import BitableAPI
 from .contact import ContactAPI
 from .docx import DocxAPI
+from .drive import DriveAPI
 from .media import MediaAPI
 from .sheet import SheetAPI
 from .wiki import WikiAPI
@@ -37,6 +39,7 @@ class FeishuSDK:
     - sdk.contact - 联系人/用户信息
     - sdk.wiki    - Wiki 知识库
     - sdk.docx    - 云文档 (CRUD)
+    - sdk.drive   - 云空间文件管理
     - sdk.media   - 图片/附件/画板
     - sdk.sheet   - 电子表格
     - sdk.bitable - 多维表格
@@ -66,6 +69,7 @@ class FeishuSDK:
         self._contact: Optional[ContactAPI] = None
         self._wiki: Optional[WikiAPI] = None
         self._docx: Optional[DocxAPI] = None
+        self._drive: Optional[DriveAPI] = None
         self._media: Optional[MediaAPI] = None
         self._sheet: Optional[SheetAPI] = None
         self._bitable: Optional[BitableAPI] = None
@@ -112,6 +116,12 @@ class FeishuSDK:
         if self._docx is None:
             self._docx = DocxAPI(self._core)
         return self._docx
+
+    @property
+    def drive(self) -> DriveAPI:
+        if self._drive is None:
+            self._drive = DriveAPI(self._core)
+        return self._drive
 
     @property
     def media(self) -> MediaAPI:

@@ -117,6 +117,16 @@ feishu-docx export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
 # 抓取公众号文章并创建飞书文档
 feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxxx"
 
+# 在 tenant 模式下列出应用云空间中的文档
+feishu-docx drive ls --type docx
+
+# 查看和修改文档公开权限
+feishu-docx drive perm-show "https://xxx.feishu.cn/docx/xxx"
+feishu-docx drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
+
+# 双重确认后清空云空间文件
+feishu-docx drive clear --type docx
+
 # 使用 Token（临时）
 feishu-docx export "URL" -t your_access_token
 
@@ -193,6 +203,17 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 
 > ⚠️ Tenant 模式需要在[飞书开放平台](https://open.feishu.cn/app) → 应用权限中预先配置文档权限。
 
+**云空间管理（tenant / oauth）：**
+```bash
+# tenant 模式：管理应用云空间
+feishu-docx drive ls --type docx
+
+# oauth 模式：管理个人云空间
+feishu-docx drive ls --auth-mode oauth --type docx
+```
+
+> 📎 飞书会根据 access token 类型区分云空间：`tenant_access_token` 对应应用云空间，`user_access_token` 对应个人云空间。应用云空间资源无法直接通过 UI 管理，需要使用 Drive/File API 管理。
+
 **OAuth 模式（访问用户文档）：**
 ```bash
 # 一次性配置
@@ -216,6 +237,15 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 | `export-workspace-schema <id>`  | 导出 APaaS 数据库结构         |
 | `export-wechat <URL>`           | 导出公众号文章为 Markdown       |
 | `create <title>`                | 创建飞书文档（支持 --url 导入公众号） |
+| `drive ls`                      | 列出应用云空间 / 个人云空间文件   |
+| `drive rm <TOKEN>`              | 删除云空间文件                 |
+| `drive perm-show <TOKEN>`       | 查看公开权限                  |
+| `drive perm-set <TOKEN>`        | 更新公开权限                  |
+| `drive perm-members <TOKEN>`    | 列出权限成员                  |
+| `drive perm-add <TOKEN>`        | 新增权限成员                  |
+| `drive perm-update <TOKEN>`     | 更新权限成员                  |
+| `drive perm-rm <TOKEN>`         | 删除权限成员                  |
+| `drive clear`                   | 双重确认后批量清空文件            |
 | `write <URL>`                   | 向文档追加 Markdown 内容      |
 | `update <URL>`                  | 更新文档中指定 Block          |
 | `auth`                          | OAuth 授权                |
@@ -251,6 +281,10 @@ pytest tests/ -v
 ## 📜 更新日志
 
 查看 [CHANGELOG.md](./CHANGELOG.md) 了解版本历史。
+
+## 📚 更多文档
+
+- [云空间管理](./docs/drive-management.md)
 
 ---
 

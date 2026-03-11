@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 # =====================================================
 # @File   ：common.py
-# @Date   ：2026/02/01 19:15
+# @Date   ：2026/03/11 11:45
 # @Author ：leemysw
 # 2026/02/01 19:15   Create - 从 main.py 拆分
+# 2026/03/11 11:45   Add drive token normalization helpers
 # =====================================================
 """
 [INPUT]: 依赖 typer, feishu_docx.utils.config, feishu_docx.utils.console
-[OUTPUT]: 对外提供 get_credentials, normalize_folder_token, console
+[OUTPUT]: 对外提供 get_credentials, normalize_folder_token, normalize_drive_target, console
 [POS]: cli 模块的共享工具函数
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """
@@ -99,3 +100,34 @@ def normalize_folder_token(folder: Optional[str]) -> Optional[str]:
     except Exception:
         return folder
     return folder
+
+
+def normalize_drive_target(value: str, file_type: Optional[str] = None) -> tuple[str, Optional[str]]:
+    """从 URL 或 token 提取 drive token 和类型。"""
+    parsed_type = file_type
+    token = value
+
+    try:
+        parsed = urlparse(value)
+        path = parsed.path or ""
+        patterns = [
+            (r"/docx/([A-Za-z0-9]+)", "docx"),
+            (r"/docs/([A-Za-z0-9]+)", "doc"),
+            (r"/sheet/([A-Za-z0-9]+)", "sheet"),
+            (r"/sheets/([A-Za-z0-9]+)", "sheet"),
+            (r"/base/([A-Za-z0-9]+)", "bitable"),
+            (r"/wiki/([A-Za-z0-9]+)", "wiki"),
+            (r"/drive/folder/([A-Za-z0-9]+)", "folder"),
+            (r"/file/([A-Za-z0-9]+)", "file"),
+        ]
+        for pattern, matched_type in patterns:
+            match = re.search(pattern, path)
+            if match:
+                token = match.group(1)
+                if parsed_type is None:
+                    parsed_type = matched_type
+                break
+    except Exception:
+        return value, parsed_type
+
+    return token, parsed_type

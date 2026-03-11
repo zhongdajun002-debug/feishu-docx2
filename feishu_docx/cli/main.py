@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # =====================================================
 # @File   ：main.py
-# @Date   ：2026/01/28 19:00
+# @Date   ：2026/03/11 11:45
 # @Author ：leemysw
 # 2025/01/09 18:30   Create
 # 2026/01/28 11:10   Support folder url parsing
@@ -13,6 +13,7 @@
 # 2026/02/01 19:20   Refactor - 拆分为多个命令模块
 # 2026/03/02 11:00   Add export-wechat command
 # 2026/03/02 11:20   Merge wechat import into create --url
+# 2026/03/11 11:45   Add drive management command group
 # =====================================================
 """
 [INPUT]: 依赖 typer, 各命令子模块
@@ -93,6 +94,13 @@ app.command()(update)
 from .cmd_apaas import export_workspace_schema
 
 app.command(name="export-workspace-schema")(export_workspace_schema)
+
+# ==============================================================================
+# 注册命令 - Drive
+# ==============================================================================
+from .cmd_drive import drive_app
+
+app.add_typer(drive_app, name="drive")
 
 # ==============================================================================
 # 注册命令 - 认证
