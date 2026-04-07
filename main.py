@@ -12,7 +12,7 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-from feishu_docx.cli.main import app
+from feishu_docx2.cli.main import app
 
 if __name__ == '__main__':
     app()

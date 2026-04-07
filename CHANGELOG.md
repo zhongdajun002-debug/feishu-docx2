@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - 新增 `export-browser` CLI，可在公开文档或提供浏览器会话状态的场景下直接导出 Markdown
-- 新增 Browser-based 导出模块 `feishu_docx.core.browser_export`，按提取器、解析器、资源下载器、导出器拆分目录结构
+- 新增 Browser-based 导出模块 `feishu_docx2.core.browser_export`，按提取器、解析器、资源下载器、导出器拆分目录结构
 - `FeishuExporter` 新增 `export_content_with_browser()` 与 `export_with_browser()` 方法
 
 ### Changed

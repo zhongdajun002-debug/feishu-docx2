@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 dynamic = ["version"]
-name = "feishu-docx"
+name = "feishu-docx2"
 description = "Export Feishu/Lark cloud documents to Markdown"
 readme = "README.md"
 license = "MIT"
@@ -32,24 +32,25 @@ dependencies = [
     "beautifulsoup4>=4.12.0",
     "markdownify>=0.13.1",
     "mistune>=3.0",
+    "openpyxl>=3.1",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.10"]
 
 [project.scripts]
-feishu-docx = "feishu_docx.cli.main:app"
+feishu-docx2 = "feishu_docx2.cli.main:app"
 
 [project.urls]
-Homepage = "https://github.com/leemysw/feishu-docx"
-Repository = "https://github.com/leemysw/feishu-docx.git"
-Documentation = "https://github.com/leemysw/feishu-docx#readme"
+Homepage = "https://github.com/leemysw/feishu-docx2"
+Repository = "https://github.com/leemysw/feishu-docx2.git"
+Documentation = "https://github.com/leemysw/feishu-docx2#readme"
 
 [tool.hatch.build.targets.sdist]
-include = ["feishu_docx"]
+include = ["feishu_docx2"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["feishu_docx"]
+packages = ["feishu_docx2"]
 
 [tool.hatch.version]
 source = "vcs"

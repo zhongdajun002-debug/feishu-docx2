@@ -1,23 +1,25 @@
 <div align="center">
 
-# feishu-docx
+# feishu-docx2
 
 <p align="center">
   <em>飞书知识库导出、写入与云空间管理工具 | 支持 Markdown、公众号导入、CLI、TUI、OAuth 2.0</em>
 </p>
 
-[![PyPI version](https://badge.fury.io/py/feishu-docx.svg)](https://badge.fury.io/py/feishu-docx)
+[![PyPI version](https://badge.fury.io/py/feishu-docx2.svg)](https://badge.fury.io/py/feishu-docx2)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <strong>中文</strong> | <a href="https://github.com/leemysw/feishu-docx/blob/main/README.md">English</a>
+  <strong>中文</strong> | <a href="https://github.com/leemysw/feishu-docx2/blob/main/README.md">English</a>
 </p>
 </div>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/leemysw/feishu-docx/main/docs/tui.png" alt="feishu-docx TUI" width="90%">
+<img src="https://raw.githubusercontent.com/leemysw/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
 </div>
+
+> 🍴 **Fork 自 [feishu-docx](https://github.com/leemysw/feishu-docx)** — 本项目基于原始 feishu-docx 进行定制和扩展。
 
 ---
 
@@ -29,7 +31,7 @@
 
 ---
 
-## 🎯 为什么选择 feishu-docx？
+## 🎯 为什么选择 feishu-docx2？
 
 **让 AI Agent 读懂、写入并管理你的飞书知识库。**
 
@@ -47,22 +49,22 @@
 
 ```bash
 # 安装
-pip install feishu-docx
+pip install feishu-docx2
 
 # 配置凭证（只需一次）
-feishu-docx config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
+feishu-docx2 config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
 
 # 导出！（自动获取 tenant_access_token，无需 OAuth 授权）
-feishu-docx export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
+feishu-docx2 export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
 
 # 直接从公众号抓取并创建飞书文档
-feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxx"
+feishu-docx2 create --url "https://mp.weixin.qq.com/s/xxxxx"
 
 # 管理应用云空间中的文档
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # 可选：使用 OAuth 模式获取用户级权限
-# feishu-docx config set --auth-mode oauth && feishu-docx auth
+# feishu-docx2 config set --auth-mode oauth && feishu-docx2 auth
 ```
 
 ---
@@ -71,7 +73,7 @@ feishu-docx drive ls --type docx
 
 **让 Agent 直接访问你的飞书知识库！**
 
-本项目已包含 Claude Skills 配置，位于 `.skills/feishu-docx/SKILL.md`。
+本项目已包含 Claude Skills 配置，位于 `.skills/feishu-docx2/SKILL.md`。
 支持 OpenCode、Claude Code、Codex、Cursor 等 Agent / IDE 环境。
 
 将此 Skill 复制到你的 Agent 项目中，Claude 就能：
@@ -138,47 +140,47 @@ playwright install chromium
 
 ```bash
 # 导出单个文档到指定目录
-feishu-docx export "https://xxx.feishu.cn/docx/xxx" -o ./docs
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx" -o ./docs
 
 # 在真实浏览器会话中导出公开文档或当前浏览器可读文档
-feishu-docx export-browser "https://xxx.larkoffice.com/wiki/xxx" -o ./browser_docs
+feishu-docx2 export-browser "https://xxx.larkoffice.com/wiki/xxx" -o ./browser_docs
 
 # 复用已有 Playwright 登录态导出
-feishu-docx export-browser "https://xxx.larkoffice.com/wiki/xxx" --storage-state ./storage_state.json
+feishu-docx2 export-browser "https://xxx.larkoffice.com/wiki/xxx" --storage-state ./storage_state.json
 
 # 批量导出整个知识空间（保持层级结构）
-feishu-docx export-wiki-space <space_id_or_url> -o ./wiki_backup --max-depth 5
+feishu-docx2 export-wiki-space <space_id_or_url> -o ./wiki_backup --max-depth 5
 
 # 导出 APaaS 数据库结构
-feishu-docx export-workspace-schema <workspace_id> -o ./database_schema.md
+feishu-docx2 export-workspace-schema <workspace_id> -o ./database_schema.md
 
 # 导出公众号文章为 Markdown
-feishu-docx export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
+feishu-docx2 export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
 
 # 抓取公众号文章并创建飞书文档
-feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxxx"
+feishu-docx2 create --url "https://mp.weixin.qq.com/s/xxxxxx"
 
 # 在 tenant 模式下列出应用云空间中的文档
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # 查看和修改文档公开权限
-feishu-docx drive perm-show "https://xxx.feishu.cn/docx/xxx"
-feishu-docx drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
+feishu-docx2 drive perm-show "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
 
 # 双重确认后清空云空间文件
-feishu-docx drive clear --type docx
+feishu-docx2 drive clear --type docx
 
 # 使用 Token（临时）
-feishu-docx export "URL" -t your_access_token
+feishu-docx2 export "URL" -t your_access_token
 
 # 启动 TUI 界面
-feishu-docx tui
+feishu-docx2 tui
 ```
 
 ### Python API
 
 ```python
-from feishu_docx import FeishuExporter
+from feishu_docx2 import FeishuExporter
 
 # 初始化（使用 tenant_access_token，推荐）
 exporter = FeishuExporter(app_id="xxx", app_secret="xxx")
@@ -231,7 +233,7 @@ print(f"导出 {result['exported']} 个文档到 {result['space_dir']}")
 4. 保存凭证：
 
 ```bash
-feishu-docx config set --app-id cli_xxx --app-secret xxx
+feishu-docx2 config set --app-id cli_xxx --app-secret xxx
 ```
 
 ### 🔑 认证模式
@@ -247,10 +249,10 @@ feishu-docx config set --app-id cli_xxx --app-secret xxx
 **Tenant 模式（推荐）：**
 ```bash
 # 一次性配置
-feishu-docx config set --app-id xxx --app-secret xxx
+feishu-docx2 config set --app-id xxx --app-secret xxx
 
 # 导出（自动获取 tenant_access_token）
-feishu-docx export "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx"
 ```
 
 > ⚠️ Tenant 模式需要在[飞书开放平台](https://open.feishu.cn/app) → 应用权限中预先配置文档权限。
@@ -258,10 +260,10 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 **云空间管理（tenant / oauth）：**
 ```bash
 # tenant 模式：管理应用云空间
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # oauth 模式：管理个人云空间
-feishu-docx drive ls --auth-mode oauth --type docx
+feishu-docx2 drive ls --auth-mode oauth --type docx
 ```
 
 > 📎 飞书会根据 access token 类型区分云空间：`tenant_access_token` 对应应用云空间，`user_access_token` 对应个人云空间。应用云空间资源无法直接通过 UI 管理，需要使用 Drive/File API 管理。
@@ -269,11 +271,11 @@ feishu-docx drive ls --auth-mode oauth --type docx
 **OAuth 模式（访问用户文档）：**
 ```bash
 # 一次性配置
-feishu-docx config set --app-id xxx --app-secret xxx --auth-mode oauth
-feishu-docx auth  # 在浏览器中完成授权
+feishu-docx2 config set --app-id xxx --app-secret xxx --auth-mode oauth
+feishu-docx2 auth  # 在浏览器中完成授权
 
 # 导出（使用缓存的 user_access_token）
-feishu-docx export "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx"
 ```
 
 > 💡 OAuth 模式在授权时动态申请权限，无需预先配置。
@@ -321,8 +323,8 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 ## 🛠️ 开发
 
 ```bash
-git clone https://github.com/leemysw/feishu-docx.git
-cd feishu-docx
+git clone https://github.com/leemysw/feishu-docx2.git
+cd feishu-docx2
 pip install -e ".[dev]"
 pytest tests/ -v
 ```

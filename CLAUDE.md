@@ -1,11 +1,11 @@
-# feishu-docx
+# feishu-docx2
 
 L1 | 飞书云文档导出 Markdown 工具
 
 Python 3.11+ | lark-oapi + pydantic + typer + textual
 
 <directory>
-feishu_docx/
+feishu_docx2/
 ├── auth/       - OAuth 2.0 认证模块，自动获取 user_access_token
 ├── core/       - 核心解析逻辑，飞书 API 封装及文档解析器
 ├── schema/     - Pydantic 数据模型，Block 类型定义

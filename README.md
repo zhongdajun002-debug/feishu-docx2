@@ -1,24 +1,26 @@
 <div align="center">
 
-# feishu-docx
+# feishu-docx2
 
 <p align="center">
   <em>Feishu knowledge base export, writing, and cloud-space management tool with Markdown, WeChat import, CLI, TUI, and OAuth 2.0</em><br>
 </p>
 
-[![PyPI version](https://badge.fury.io/py/feishu-docx.svg)](https://badge.fury.io/py/feishu-docx)
+[![PyPI version](https://badge.fury.io/py/feishu-docx2.svg)](https://badge.fury.io/py/feishu-docx2)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <a href="https://github.com/leemysw/feishu-docx/blob/main/README_zh.md">中文</a> | <strong>English</strong>
+  <a href="https://github.com/leemysw/feishu-docx2/blob/main/README_zh.md">中文</a> | <strong>English</strong>
 </p>
 
 </div>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/leemysw/feishu-docx/main/docs/tui.png" alt="feishu-docx TUI" width="90%">
+<img src="https://raw.githubusercontent.com/leemysw/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
 </div>
+
+> 🍴 **Forked from [feishu-docx](https://github.com/leemysw/feishu-docx)** — This project is a fork of the original feishu-docx, with customizations and extensions for internal use.
 
 ---
 
@@ -30,7 +32,7 @@
 
 ---
 
-## 🎯 Why feishu-docx?
+## 🎯 Why feishu-docx2?
 
 **Let AI Agents read, write, and manage your Feishu/Lark knowledge base.**
 
@@ -48,22 +50,22 @@
 
 ```bash
 # Install
-pip install feishu-docx
+pip install feishu-docx2
 
 # Configure credentials (one-time)
-feishu-docx config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
+feishu-docx2 config set --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET
 
 # Export! (auto-obtains tenant_access_token, no OAuth needed)
-feishu-docx export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
+feishu-docx2 export "https://my.feishu.cn/wiki/KUIJwaBuGiwaSIkkKJ6cfVY8nSg"
 
 # Create a Feishu doc directly from a WeChat article
-feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxx"
+feishu-docx2 create --url "https://mp.weixin.qq.com/s/xxxxx"
 
 # Manage app cloud-space documents
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # Optional: Use OAuth mode for user-level permissions
-# feishu-docx config set --auth-mode oauth && feishu-docx auth
+# feishu-docx2 config set --auth-mode oauth && feishu-docx2 auth
 ```
 
 
@@ -73,7 +75,7 @@ feishu-docx drive ls --type docx
 
 **Enable Agent to access your Feishu knowledge base directly!**
 
-This project includes a Claude Skill at `.skills/feishu-docx/SKILL.md`.
+This project includes a Claude Skill at `.skills/feishu-docx2/SKILL.md`.
 Supports OpenCode, Claude Code, Codex, Cursor, and more.
 
 Copy this Skill to your agent project, and Claude can:
@@ -142,47 +144,47 @@ playwright install chromium
 
 ```bash
 # Export single document to specific directory
-feishu-docx export "https://xxx.feishu.cn/docx/xxx" -o ./docs
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx" -o ./docs
 
 # Export a public or browser-readable doc in a real browser session
-feishu-docx export-browser "https://xxx.larkoffice.com/wiki/xxx" -o ./browser_docs
+feishu-docx2 export-browser "https://xxx.larkoffice.com/wiki/xxx" -o ./browser_docs
 
 # Export with existing Playwright storage state
-feishu-docx export-browser "https://xxx.larkoffice.com/wiki/xxx" --storage-state ./storage_state.json
+feishu-docx2 export-browser "https://xxx.larkoffice.com/wiki/xxx" --storage-state ./storage_state.json
 
 # Batch export entire wiki space (preserves hierarchy)
-feishu-docx export-wiki-space <space_id_or_url> -o ./wiki_backup --max-depth 5
+feishu-docx2 export-wiki-space <space_id_or_url> -o ./wiki_backup --max-depth 5
 
 # Export APaaS database schema
-feishu-docx export-workspace-schema <workspace_id> -o ./database_schema.md
+feishu-docx2 export-workspace-schema <workspace_id> -o ./database_schema.md
 
 # Export WeChat article to Markdown
-feishu-docx export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
+feishu-docx2 export-wechat "https://mp.weixin.qq.com/s/xxxxxx"
 
 # Fetch a WeChat article and create a Feishu doc
-feishu-docx create --url "https://mp.weixin.qq.com/s/xxxxxx"
+feishu-docx2 create --url "https://mp.weixin.qq.com/s/xxxxxx"
 
 # List app cloud-space documents in tenant mode
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # Manage public permission of a document
-feishu-docx drive perm-show "https://xxx.feishu.cn/docx/xxx"
-feishu-docx drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
+feishu-docx2 drive perm-show "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 drive perm-set "https://xxx.feishu.cn/docx/xxx" --share-entity anyone_can_view
 
 # Clear files in cloud space with double confirmation
-feishu-docx drive clear --type docx
+feishu-docx2 drive clear --type docx
 
 # Use token directly
-feishu-docx export "URL" -t your_access_token
+feishu-docx2 export "URL" -t your_access_token
 
 # Launch TUI
-feishu-docx tui
+feishu-docx2 tui
 ```
 
 ### Python API
 
 ```python
-from feishu_docx import FeishuExporter
+from feishu_docx2 import FeishuExporter
 
 # Initialize (uses tenant_access_token by default)
 exporter = FeishuExporter(app_id="xxx", app_secret="xxx")
@@ -235,7 +237,7 @@ print(f"Exported {result['exported']} docs to {result['space_dir']}")
 4. Save credentials:
 
 ```bash
-feishu-docx config set --app-id cli_xxx --app-secret xxx
+feishu-docx2 config set --app-id cli_xxx --app-secret xxx
 ```
 
 ### 🔑 Authentication Modes
@@ -251,10 +253,10 @@ feishu-docx config set --app-id cli_xxx --app-secret xxx
 **Tenant Mode (Recommended for most cases):**
 ```bash
 # One-time setup
-feishu-docx config set --app-id xxx --app-secret xxx
+feishu-docx2 config set --app-id xxx --app-secret xxx
 
 # Export (auto-obtains tenant_access_token)
-feishu-docx export "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx"
 ```
 
 > ⚠️ Tenant mode requires pre-configuring document permissions in [Feishu Open Platform](https://open.feishu.cn/app) → App Permissions.
@@ -262,10 +264,10 @@ feishu-docx export "https://xxx.feishu.cn/docx/xxx"
 **Cloud space management (tenant/user):**
 ```bash
 # Tenant mode: manage files in app cloud space
-feishu-docx drive ls --type docx
+feishu-docx2 drive ls --type docx
 
 # OAuth mode: manage files in personal cloud space
-feishu-docx drive ls --auth-mode oauth --type docx
+feishu-docx2 drive ls --auth-mode oauth --type docx
 ```
 
 > 📎 Feishu separates cloud space by token type: `tenant_access_token` maps to app cloud space, and `user_access_token` maps to personal cloud space. App cloud space resources cannot be managed from the UI and should be managed through Drive/File APIs.
@@ -273,11 +275,11 @@ feishu-docx drive ls --auth-mode oauth --type docx
 **OAuth Mode (For user-level access):**
 ```bash
 # One-time setup
-feishu-docx config set --app-id xxx --app-secret xxx --auth-mode oauth
-feishu-docx auth  # Opens browser for authorization
+feishu-docx2 config set --app-id xxx --app-secret xxx --auth-mode oauth
+feishu-docx2 auth  # Opens browser for authorization
 
 # Export (uses cached user_access_token)
-feishu-docx export "https://xxx.feishu.cn/docx/xxx"
+feishu-docx2 export "https://xxx.feishu.cn/docx/xxx"
 ```
 
 > 💡 OAuth mode requests permissions during the authorization flow, no pre-configuration needed.

@@ -199,6 +199,8 @@ tests/
 # uv related
 uv.lock
 
+template
+
 # codex
 Agents.md
 Agents.md

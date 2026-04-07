@@ -1,6 +1,6 @@
 # 云空间管理
 
-`feishu-docx drive` 用于管理飞书云空间中的文件、公开权限和成员权限。
+`feishu-docx2 drive` 用于管理飞书云空间中的文件、公开权限和成员权限。
 
 ## 云空间类型
 
@@ -17,30 +17,30 @@
 
 ```bash
 # 列出应用云空间中的 docx
-feishu-docx drive ls --auth-mode tenant --type docx
+feishu-docx2 drive ls --auth-mode tenant --type docx
 
 # 列出个人云空间中的 docx
-feishu-docx drive ls --auth-mode oauth --type docx
+feishu-docx2 drive ls --auth-mode oauth --type docx
 
 # 列出某个文件夹中的所有文件
-feishu-docx drive ls --folder "https://xxx.feishu.cn/drive/folder/fldcnXXXXXX"
+feishu-docx2 drive ls --folder "https://xxx.feishu.cn/drive/folder/fldcnXXXXXX"
 ```
 
 ### 删除单个文件
 
 ```bash
-feishu-docx drive rm "https://xxx.feishu.cn/docx/ABC123"
-feishu-docx drive rm ABC123 --type docx
+feishu-docx2 drive rm "https://xxx.feishu.cn/docx/ABC123"
+feishu-docx2 drive rm ABC123 --type docx
 ```
 
 ### 查看和修改公开权限
 
 ```bash
 # 查看公开权限
-feishu-docx drive perm-show "https://xxx.feishu.cn/docx/ABC123"
+feishu-docx2 drive perm-show "https://xxx.feishu.cn/docx/ABC123"
 
 # 修改公开权限
-feishu-docx drive perm-set "https://xxx.feishu.cn/docx/ABC123" \
+feishu-docx2 drive perm-set "https://xxx.feishu.cn/docx/ABC123" \
   --share-entity anyone_can_view \
   --link-share-entity anyone_readable
 ```
@@ -49,22 +49,22 @@ feishu-docx drive perm-set "https://xxx.feishu.cn/docx/ABC123" \
 
 ```bash
 # 查看权限成员
-feishu-docx drive perm-members "https://xxx.feishu.cn/docx/ABC123"
+feishu-docx2 drive perm-members "https://xxx.feishu.cn/docx/ABC123"
 
 # 新增权限成员
-feishu-docx drive perm-add "https://xxx.feishu.cn/docx/ABC123" \
+feishu-docx2 drive perm-add "https://xxx.feishu.cn/docx/ABC123" \
   --member-id ou_xxx \
   --member-type open_id \
   --perm edit
 
 # 更新权限成员
-feishu-docx drive perm-update "https://xxx.feishu.cn/docx/ABC123" \
+feishu-docx2 drive perm-update "https://xxx.feishu.cn/docx/ABC123" \
   --member-id ou_xxx \
   --member-type open_id \
   --perm full_access
 
 # 删除权限成员
-feishu-docx drive perm-rm "https://xxx.feishu.cn/docx/ABC123" \
+feishu-docx2 drive perm-rm "https://xxx.feishu.cn/docx/ABC123" \
   --member-id ou_xxx \
   --member-type open_id
 ```
@@ -73,10 +73,10 @@ feishu-docx drive perm-rm "https://xxx.feishu.cn/docx/ABC123" \
 
 ```bash
 # 清空根目录下所有 docx
-feishu-docx drive clear --type docx
+feishu-docx2 drive clear --type docx
 
 # 清空指定文件夹
-feishu-docx drive clear --folder "https://xxx.feishu.cn/drive/folder/fldcnXXXXXX"
+feishu-docx2 drive clear --folder "https://xxx.feishu.cn/drive/folder/fldcnXXXXXX"
 ```
 
 `drive clear` 是高风险操作，默认会执行两次确认：
