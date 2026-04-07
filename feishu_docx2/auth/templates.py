@@ -201,7 +201,7 @@ SUCCESS_HTML = f"""
         </div>
         
         <div class="footer">
-            <a href="https://github.com/leemysw/feishu-docx2">GitHub</a> · by leemysw
+            <a href="https://github.com/zhongdajun002-debug/feishu-docx2">GitHub</a> · by leemysw
         </div>
     </div>
 </body>
@@ -245,7 +245,7 @@ def get_error_html(error: str, error_desc: str) -> str:
         </div>
         
         <div class="footer">
-            <a href="https://github.com/leemysw/feishu-docx2/issues">报告问题</a> · by leemysw
+            <a href="https://github.com/zhongdajun002-debug/feishu-docx2/issues">报告问题</a> · by leemysw
         </div>
     </div>
 </body>

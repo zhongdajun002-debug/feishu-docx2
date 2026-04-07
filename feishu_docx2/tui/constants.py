@@ -26,4 +26,4 @@ DESCRIPTION = """飞书/Lark 云文档 → Markdown 导出工具
 
 VERSION = "v0.1.0"
 AUTHOR = "leemysw"
-REPO = "github.com/leemysw/feishu-docx2"
+REPO = "github.com/zhongdajun002-debug/feishu-docx2"

@@ -11,12 +11,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <strong>中文</strong> | <a href="https://github.com/leemysw/feishu-docx2/blob/main/README.md">English</a>
+  <strong>中文</strong> | <a href="https://github.com/zhongdajun002-debug/feishu-docx2/blob/main/README.md">English</a>
 </p>
 </div>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/leemysw/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
+<img src="https://raw.githubusercontent.com/zhongdajun002-debug/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
 </div>
 
 > 🍴 **Fork 自 [feishu-docx](https://github.com/leemysw/feishu-docx)** — 本项目基于原始 feishu-docx 进行定制和扩展。
@@ -323,7 +323,7 @@ feishu-docx2 export "https://xxx.feishu.cn/docx/xxx"
 ## 🛠️ 开发
 
 ```bash
-git clone https://github.com/leemysw/feishu-docx2.git
+git clone https://github.com/zhongdajun002-debug/feishu-docx2.git
 cd feishu-docx2
 pip install -e ".[dev]"
 pytest tests/ -v

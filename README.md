@@ -11,13 +11,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <a href="https://github.com/leemysw/feishu-docx2/blob/main/README_zh.md">中文</a> | <strong>English</strong>
+  <a href="https://github.com/zhongdajun002-debug/feishu-docx2/blob/main/README_zh.md">中文</a> | <strong>English</strong>
 </p>
 
 </div>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/leemysw/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
+<img src="https://raw.githubusercontent.com/zhongdajun002-debug/feishu-docx2/main/docs/tui.png" alt="feishu-docx2 TUI" width="90%">
 </div>
 
 > 🍴 **Forked from [feishu-docx](https://github.com/leemysw/feishu-docx)** — This project is a fork of the original feishu-docx, with customizations and extensions for internal use.
